@@ -1,11 +1,15 @@
 Pretty printer for [Tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html).
 
-## Useful links
-
-- [Tree-sitter query grammar](https://raw.githubusercontent.com/tree-sitter-grammars/tree-sitter-query/refs/heads/master/grammar.js)
+Available [in the browser](https://github.com/agentcooper/tree-sitter-query-formatter) and as a [Rust crate](https://crates.io/crates/tree-sitter-query-formatter).
 
 ## Development
 
 Use `cargo test --test integration_tests` to run tests.
 
 Use `cargo run <INPUT>` to print output for a file or query string. Use `cargo run <INPUT> --tree` to also print a parse tree.
+
+Use `make dev` to run the browser playground locally.
+
+## Useful links
+
+- [Tree-sitter query grammar](https://raw.githubusercontent.com/tree-sitter-grammars/tree-sitter-query/refs/heads/master/grammar.js)
