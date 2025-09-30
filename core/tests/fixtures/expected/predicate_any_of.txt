@@ -1,0 +1,9 @@
+(
+  (identifier) @variable.builtin
+  (#any-of? @variable.builtin
+    "arguments"
+    "module"
+    "console"
+    "window"
+    "document")
+)

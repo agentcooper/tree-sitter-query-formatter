@@ -1,0 +1,1 @@
+(assignment_expression left: (member_expression object: (call_expression)))

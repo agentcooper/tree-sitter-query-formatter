@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "core",
+    "wasm"
+]
+resolver = "2"
+
+[workspace.dependencies]
+pretty = "0.12.4"
+tree-sitter = "0.25.9"
+tree-sitter-tsquery = "0.7.0"
+wit-bindgen = "0.46.0"

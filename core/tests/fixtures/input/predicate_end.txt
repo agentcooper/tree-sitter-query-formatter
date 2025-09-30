@@ -1,0 +1,6 @@
+(binary_operator
+  lhs: (identifier) @lhs
+  operator: _ @operator
+  rhs: (function_definition) @rhs
+  (#eq? @lhs "fn")
+)

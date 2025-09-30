@@ -1,0 +1,5 @@
+package example:host;
+
+world host {
+  export format: func(query: string) -> option<string>;
+}

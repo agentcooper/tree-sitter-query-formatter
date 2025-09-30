@@ -1,0 +1,2 @@
+;; Methods
+(method_declaration (identifier) @type (identifier) @function)

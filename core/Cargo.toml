@@ -1,0 +1,24 @@
+[package]
+name = "tree-sitter-query-formatter"
+version = "0.1.0"
+edition = "2024"
+description = "Format Tree-sitter queries"
+authors = ["agentcooper"]
+license = "MIT"
+repository = "https://github.com/agentcooper/tree-sitter-query-formatter"
+homepage = "https://github.com/agentcooper/tree-sitter-query-formatter"
+keywords = ["tree-sitter", "query", "formatter", "syntax"]
+categories = ["development-tools"]
+
+[lib]
+name = "tree_sitter_query_formatter"
+
+[[bin]]
+name = "tree-sitter-query-formatter"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] }
+pretty = { workspace = true }
+tree-sitter = { workspace = true }
+tree-sitter-tsquery = { workspace = true }

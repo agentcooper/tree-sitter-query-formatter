@@ -1,0 +1,12 @@
+[package]
+name = "tree-sitter-query-formatter-wasm"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "tree_sitter_query_formatter"
+crate-type = ["cdylib"]
+
+[dependencies]
+tree-sitter-query-formatter = { path = "../core" }
+wit-bindgen = { workspace = true }

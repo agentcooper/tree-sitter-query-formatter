@@ -1,0 +1,1 @@
+(call_expression function: (identifier) @the-function arguments: (arguments (string)? @the-string-arg))

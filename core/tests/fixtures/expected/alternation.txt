@@ -1,0 +1,11 @@
+[
+  "break"
+  "delete"
+  "else"
+  "for"
+  "function"
+  "if"
+  "return"
+  "try"
+  "while"
+] @keyword
