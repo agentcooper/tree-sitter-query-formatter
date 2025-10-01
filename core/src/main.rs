@@ -12,15 +12,15 @@ fn print_tree_recursive(node: Node, source: &str, depth: usize) -> String {
     } else {
         String::new()
     };
-    
+
     let mut result = format!("{}{}{}\n", indent, node.kind(), node_text);
-    
+
     for i in 0..node.child_count() {
         if let Some(child) = node.child(i) {
             result.push_str(&print_tree_recursive(child, source, depth + 1));
         }
     }
-    
+
     result
 }
 
@@ -68,14 +68,10 @@ fn main() {
     let show_tree = matches.get_flag("tree");
 
     let input = if let Some(input_arg) = matches.get_one::<String>("input") {
-        if std::path::Path::new(input_arg).exists() {
-            fs::read_to_string(input_arg).unwrap_or_else(|e| {
-                eprintln!("Error reading file {}: {}", input_arg, e);
-                std::process::exit(1);
-            })
-        } else {
-            input_arg.clone()
-        }
+        fs::read_to_string(input_arg).unwrap_or_else(|e| {
+            eprintln!("Error reading file {}: {}", input_arg, e);
+            std::process::exit(1);
+        })
     } else {
         let mut buffer = String::new();
         io::stdin().read_to_string(&mut buffer).unwrap_or_else(|e| {
@@ -85,6 +81,11 @@ fn main() {
         buffer
     };
 
+    if input.trim().is_empty() {
+        eprintln!("Error: Empty input");
+        std::process::exit(1);
+    }
+
     if show_tree {
         if let Some(tree_output) = print_tree(&input) {
             println!("Parse tree:");
@@ -93,10 +94,9 @@ fn main() {
         }
     }
 
-    if let Some(formatted) = format(&input, width) {
-        println!("{}", formatted);
-    } else {
-        eprintln!("Failed to parse input");
+    let formatted = format(&input, width).unwrap_or_else(|e| {
+        eprintln!("Error: {}", e);
         std::process::exit(1);
-    }
+    });
+    println!("{}", formatted);
 }

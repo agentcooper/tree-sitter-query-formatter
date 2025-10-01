@@ -7,8 +7,8 @@ wit_bindgen::generate!({
 struct MyHost;
 
 impl Guest for MyHost {
-    fn format(query: String) -> Option<String> {
-        format(&query, 80)
+    fn format(query: String) -> Result<String, String> {
+        format(&query, 80).map_err(|e| e.to_string())
     }
 }
 

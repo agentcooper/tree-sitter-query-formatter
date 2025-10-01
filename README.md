@@ -6,7 +6,7 @@ Available [in the browser](https://github.com/agentcooper/tree-sitter-query-form
 
 Use `cargo test --test integration_tests` to run tests.
 
-Use `cargo run <INPUT>` to print output for a file or query string. Use `cargo run <INPUT> --tree` to also print a parse tree.
+Use `cargo run <FILE>` to print output for a file or `echo '...' | cargo run` for a short snippet. Use `cargo run <FILE> --tree` to also print a parse tree.
 
 Use `make dev` to run the browser playground locally.
 

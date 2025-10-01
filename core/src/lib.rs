@@ -399,24 +399,50 @@ fn map<'a>(node: Node<'a>, source: &'a str) -> RcDoc<'a, ()> {
     }
 }
 
-pub fn format(input: &str, width: usize) -> Option<String> {
+/// Formats a Tree-sitter query string with proper indentation and line breaks.
+///
+/// Takes a Tree-sitter query as input and formats it according to the grammar rules,
+/// applying consistent indentation and line breaking to improve readability.
+///
+/// # Arguments
+///
+/// * `input` - The Tree-sitter query string to format
+/// * `width` - The target line width for formatting
+///
+/// # Returns
+///
+/// Returns a `Result` containing the formatted query string on success, or an error
+/// if parsing or formatting fails.
+///
+/// # Errors
+///
+/// This function will return an error if:
+/// - The Tree-sitter grammar cannot be loaded
+/// - The input query cannot be parsed
+/// - The formatted output cannot be rendered
+///
+/// # Example
+///
+/// ```
+/// use tree_sitter_query_formatter::format;
+///
+/// let query = "(function_definition name: (identifier) @func)";
+/// let formatted = format(query, 80).unwrap();
+/// ```
+pub fn format(input: &str, width: usize) -> Result<String, Box<dyn std::error::Error>> {
     let mut parser = Parser::new();
     parser
         .set_language(&tree_sitter_tsquery::LANGUAGE.into())
-        .expect("Error loading Rust grammar");
+        .map_err(|e| format!("Error loading grammar: {:?}", e))?;
 
-    if let Some(tree) = parser.parse(input, None) {
-        let root_node = tree.root_node();
+    let tree = parser.parse(input, None).ok_or("Failed to parse input")?;
 
-        let doc = map(root_node, input);
+    let root_node = tree.root_node();
+    let doc = map(root_node, input);
 
-        let mut w = Vec::new();
-        doc.render(width, &mut w).unwrap();
-        let output = String::from_utf8(w).unwrap();
+    let mut w = Vec::new();
+    doc.render(width, &mut w)?;
+    let output = String::from_utf8(w)?;
 
-        return Some(output);
-    }
-
-    return None;
+    Ok(output)
 }
-
