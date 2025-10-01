@@ -1,3 +1,5 @@
+Formatter for [Tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html).
+
 ## CLI
 
 ```bash
@@ -16,3 +18,7 @@ use tree_sitter_query_formatter::format;
 let query = "(call_expression function: (identifier) @f arguments: (arguments) @args)";
 let formatted = format(query, 80).unwrap();
 ```
+
+## Web
+
+https://agentcooper.github.io/tree-sitter-query-formatter/

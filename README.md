@@ -1,6 +1,6 @@
-Pretty printer for [Tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html).
+Formatter for [Tree-sitter queries](https://tree-sitter.github.io/tree-sitter/using-parsers/queries/1-syntax.html).
 
-Available [in the browser](https://github.com/agentcooper/tree-sitter-query-formatter) and as a [Rust crate](https://crates.io/crates/tree-sitter-query-formatter).
+Available [on the web](https://agentcooper.github.io/tree-sitter-query-formatter/) and as a [Rust crate](https://crates.io/crates/tree-sitter-query-formatter).
 
 ## Development
 
