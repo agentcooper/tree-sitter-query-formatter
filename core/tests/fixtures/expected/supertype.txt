@@ -1,1 +1,2 @@
 (expression) @any-expression
+(expression/binary_expression) @binary-expression

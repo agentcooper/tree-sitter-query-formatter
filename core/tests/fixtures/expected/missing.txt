@@ -1,1 +1,3 @@
 (MISSING) @missing-node
+(MISSING identifier) @missing-identifier
+(MISSING ";") @missing-semicolon

@@ -199,7 +199,16 @@ fn map<'a>(node: Node<'a>, source: &'a str) -> RcDoc<'a, ()> {
                 if let Some(child) = node.child(i) {
                     match child.kind() {
                         "(" => docs.push(RcDoc::text("(")),
-                        "MISSING" => docs.push(RcDoc::text("MISSING")),
+                        "MISSING" => {
+                            docs.push(RcDoc::text("MISSING"));
+                            if i + 1 < node.child_count() {
+                                if let Some(next_child) = node.child(i + 1) {
+                                    if next_child.kind() != ")" && next_child.kind() != "capture" {
+                                        docs.push(RcDoc::space());
+                                    }
+                                }
+                            }
+                        }
                         ")" => docs.push(RcDoc::text(")")),
                         "capture" => docs.push(map(child, source)),
                         _ => docs.push(map(child, source)),
@@ -388,6 +397,7 @@ fn map<'a>(node: Node<'a>, source: &'a str) -> RcDoc<'a, ()> {
         "(" => RcDoc::text("("),
         ")" => RcDoc::text(")"),
         "." => RcDoc::text(" ."),
+        "/" => RcDoc::text("/"),
         "comment" => {
             let text = &source[node.start_byte()..node.end_byte()];
             RcDoc::text(text)
