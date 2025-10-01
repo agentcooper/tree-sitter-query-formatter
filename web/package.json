@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "transpile": "jco transpile --optimize ../target/wasm32-wasip2/debug/tree_sitter_query_formatter.wasm -o transpiled",
+    "transpile": "jco transpile --optimize ../target/wasm32-wasip2/release/tree_sitter_query_formatter.wasm -o transpiled",
     "dev": "npm run transpile && vite",
     "build": "npm run transpile && vite build --base=/tree-sitter-query-formatter/",
     "clean": "rm -rf node_modules dist transpiled"

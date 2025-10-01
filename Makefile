@@ -44,7 +44,7 @@ install-wasi-sdk: $(WASI_SDK_DIR)
 
 build-wasm: $(WASI_SDK_DIR)
 	CC="$(PWD)/$(WASI_SDK_DIR)/bin/clang --sysroot=$(PWD)/$(WASI_SDK_DIR)/share/wasi-sysroot" \
-	cargo build --package tree-sitter-query-formatter-wasm --target=wasm32-wasip2
+	cargo build --release --package tree-sitter-query-formatter-wasm --target=wasm32-wasip2
 
 dev: build-wasm
 	(cd ./web && npm install && npm run dev)
